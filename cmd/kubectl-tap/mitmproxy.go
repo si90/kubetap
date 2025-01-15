@@ -120,7 +120,7 @@ func (m *Mitmproxy) Sidecar(deploymentName string) v1.Container {
 }
 
 // PatchDeployment provides any necessary tweaks to the deployment after the sidecar is added.
-func (m *Mitmproxy) PatchDeployment(deployment *k8sappsv1.Deployment) {
+func (m *Mitmproxy) PatchDeployment(deployment *k8sappsv1.Statefulset) {
 	deployment.Spec.Template.Spec.Volumes = append(deployment.Spec.Template.Spec.Volumes, v1.Volume{
 		Name: kubetapConfigMapPrefix + deployment.Name,
 		VolumeSource: v1.VolumeSource{
